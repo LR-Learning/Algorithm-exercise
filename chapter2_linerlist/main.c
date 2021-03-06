@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <accctrl.h>
 
 /*
  * 数组左移p位
@@ -97,6 +98,27 @@ SNode* find_addr(SNode *str1, SNode *str2){
         q = q->next;
     }
     return p->next;
+}
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+//单调栈
+int* nextGreaterElements(int* nums, int numsSize, int* returnSize){
+    *returnSize = numsSize;
+    if(numsSize == 0) return NULL;
+    int* res = malloc(numsSize * sizeof(int));//为返回结果的数组开辟numsSize空间
+    //把res数组全部初始化为-1.其中参数1：数组地址；参数2：初始化值；参数3：数组字节大小
+    memset(res, -1, numsSize * sizeof(int));
+
+    int top = 0, stack_asc[2 * numsSize];//单调栈用来存放索引值
+    for(int i = 0; i < 2 * numsSize - 1; ++i){
+        while(top > 0 && nums[stack_asc[top - 1]] < nums[i % numsSize]){//单调栈中元素个数>1，且栈顶元素值<当前元素值
+            res[stack_asc[top - 1]] = nums[i % numsSize];//当前栈顶元素在nums中表示的索引/之后最近的一个大值修改为当前元素
+            --top;//栈顶指针-1
+        }
+        stack_asc[top++] = i % numsSize;//当前元素的索引入栈
+    }
+    return res;
 }
 
 

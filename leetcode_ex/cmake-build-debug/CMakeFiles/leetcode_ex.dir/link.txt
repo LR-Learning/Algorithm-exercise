@@ -1,0 +1,3 @@
+"D:\softwares\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\leetcode_ex.dir/objects.a
+D:\softwares\mingw64\bin\ar.exe cr CMakeFiles\leetcode_ex.dir/objects.a @CMakeFiles\leetcode_ex.dir\objects1.rsp
+D:\softwares\mingw64\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\leetcode_ex.dir/objects.a -Wl,--no-whole-archive  -o leetcode_ex.exe -Wl,--out-implib,libleetcode_ex.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\leetcode_ex.dir\linklibs.rsp
