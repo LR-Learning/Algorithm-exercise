@@ -29,8 +29,5 @@ void tixing(int h){
 
 
 int main() {
-//    tixing(4);
-    int nums[] = {2,7,11,15};
-    int* res[] = twoSum()
-    return 0;
+
 }
